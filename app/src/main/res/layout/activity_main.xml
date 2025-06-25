@@ -7,6 +7,27 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.home.MainActivity">
 
+
+  <FrameLayout
+      android:layout_width="0dp"
+      android:layout_height="?attr/actionBarSize"
+   app:layout_constraintTop_toTopOf="paren"
+   app:layout_constraintEnd_toEndOf="parent"
+   app:layout_constraintStart_toStartOf="parent"
+      android:id="@+id/toolbar"
+      android:background="@color/primaryDark">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/dancing"
+        android:textSize="30sp"
+        android:textColor="@color/secondary"
+        android:textStyle="bold"
+     android:text="@string/horoscope"/>
+  </FrameLayout>
+
  <androidx.fragment.app.FragmentContainerView
      android:id="@+id/fragment_container_view_tag"
      android:name="androidx.navigation.fragment.NavHostFragment"
@@ -16,7 +37,7 @@
      app:navGraph="@navigation/main_graph"
      app:layout_constraintTop_toTopOf="parent"
      app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintBottom_toBottomOf="@+id/toolbar"
      app:layout_constraintStart_toStartOf="parent"
      />
 
@@ -30,7 +51,7 @@
      app:layout_constraintBottom_toBottomOf="parent"
      app:itemIconTint="@color/bottom_nav_selector"
     app:itemTextColor="@color/bottom_nav_selector"
-     app:itemActiveIndicatorStyle="null"
+     app:itemActiveIndicatorStyle="@android:color/transparent"
      app:menu="@menu/menu"
      />
 
