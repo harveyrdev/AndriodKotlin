@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/notes_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/White"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:padding="12dp">
+
+<!-- Título de la Nota -->
+<TextView
+    android:id="@+id/textView_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ellipsize="end"
+    android:singleLine="true"
+    android:text="Title"
+    android:textColor="@color/DarkGray"
+    android:textSize="16sp"
+    android:textStyle="bold" />
+
+<!-- Contenido de la Nota -->
+<TextView
+    android:id="@+id/textView_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxLines="6"
+    android:ellipsize="end"
+    android:text="Notes..."
+    android:textColor="@color/DarkGray"
+    android:textSize="14sp"
+    android:layout_marginTop="4dp" />
+
+<!-- Fecha de la Nota -->
+<TextView
+    android:id="@+id/textView_date"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ellipsize="end"
+    android:singleLine="true"
+    android:text="Date..."
+    android:textColor="@color/Gray"
+    android:textSize="12sp"
+    android:layout_marginTop="4dp" />
+</LinearLayout>
+
+    </androidx.cardview.widget.CardView>

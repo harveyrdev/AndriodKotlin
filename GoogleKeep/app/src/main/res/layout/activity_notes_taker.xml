@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/White"
+    tools:context=".Notes_Taker">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_notes"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/White"
+        app:titleTextColor="@color/DarkGray"
+        app:title="@string/app_name"
+        android:elevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView_save"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_alignParentEnd="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_save"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/save_note" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Campo de título -->
+    <EditText
+        android:id="@+id/editText_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title"
+        android:backgroundTint="@android:color/transparent"
+        android:textColorHint="@color/Gray"
+        android:textColor="@color/DarkGray"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="12dp"
+        android:singleLine="true"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Campo de contenido -->
+    <EditText
+        android:id="@+id/editText_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Content"
+        android:backgroundTint="@android:color/transparent"
+        android:textColorHint="@color/Gray"
+        android:textColor="@color/DarkGray"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:gravity="top"
+        android:scrollbars="vertical"
+        android:overScrollMode="ifContentScrolls" />
+</LinearLayout>
