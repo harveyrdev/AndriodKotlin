@@ -1,6 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.safeargs)
+    kotlin("kapt")
+
+
 }
 
 android {
@@ -41,7 +46,10 @@ android {
 dependencies {
     //Dependences createds
     //NavComponents
-
+    implementation(libs.dagger.hilt)
+    implementation(libs.activity)
+    kapt(libs.dagger.hilt.compiler)
+    implementation(libs.squareup.javapoet)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
     implementation(libs.androidx.core.ktx)
@@ -52,4 +60,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+
 }

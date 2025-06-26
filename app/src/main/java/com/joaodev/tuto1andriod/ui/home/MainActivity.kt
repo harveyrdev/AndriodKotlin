@@ -12,7 +12,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.joaodev.tuto1andriod.R
 import com.joaodev.tuto1andriod.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -34,9 +36,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initNavigation() {
         val navHost: NavHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_container_view_tag) as NavHostFragment
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHost.navController
-        binding.menuNav.setupWithNavController(navController)
+        binding.bottomNavView.setupWithNavController(navController)
 
     }
 }
