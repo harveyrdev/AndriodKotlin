@@ -6,6 +6,7 @@ plugins {
     kotlin("kapt")
 
 
+
 }
 
 android {
@@ -23,12 +24,23 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
+            isDebuggable=false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            resValue("string","appjoao","Horoscopo")
+
+            buildConfigField("String","BASE_URL","\"https://newastro.vercel.app/\"")
+        }
+        getByName("debug") {
+            isDebuggable=true
+
+            resValue("string","appjoao","Horoscopo DEBUGG")
+            buildConfigField("String","BASE_URL","\"https://newastro.vercel.app/\"")
         }
     }
     compileOptions {
@@ -39,7 +51,8 @@ android {
         jvmTarget = "11"
     }
     buildFeatures{
-        viewBinding=true;
+        viewBinding=true
+        buildConfig=true
     }
 }
 
@@ -48,10 +61,16 @@ dependencies {
     //NavComponents
     implementation(libs.dagger.hilt)
     implementation(libs.activity)
+
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.squareup.javapoet)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
+    implementation(libs.retofit)
+    implementation(libs.retofit.converter)
+    implementation(libs.okhttp3)
+
+    
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

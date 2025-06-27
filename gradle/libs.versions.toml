@@ -15,6 +15,11 @@ javapoet = "1.13.0"
 activityVersion = "1.10.1"
 safeargsVersion="2.7.1"
 
+retofitVersion="2.9.0"
+okhttp3Version="4.3.1"
+
+
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -31,6 +36,10 @@ dagger-hilt = { group = "com.google.dagger", name = "hilt-android", version.ref 
 dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "daggerhilt" }
 squareup-javapoet = { group = "com.squareup", name = "javapoet", version.ref = "javapoet" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activityVersion" }
+retofit={group="com.squareup.retrofit2", name="retrofit", version.ref="retofitVersion"}
+retofit-converter={group="com.squareup.retrofit2", name="converter-gson", version.ref="retofitVersion"}
+okhttp3={group="com.squareup.okhttp3", name="logging-interceptor", version.ref="okhttp3Version"}
+
 
 
 
@@ -39,4 +48,5 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "daggerhilt" }
 safeargs={ id="androidx.navigation.safeargs.kotlin",version.ref="safeargsVersion"}
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
