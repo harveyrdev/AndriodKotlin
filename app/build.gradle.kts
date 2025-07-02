@@ -6,7 +6,6 @@ plugins {
     kotlin("kapt")
 
 
-
 }
 
 android {
@@ -26,21 +25,21 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            isDebuggable=false
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
 
-            resValue("string","appjoao","Horoscopo")
+            resValue("string", "appjoao", "Horoscopo")
 
-            buildConfigField("String","BASE_URL","\"https://newastro.vercel.app/\"")
+            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"")
         }
         getByName("debug") {
-            isDebuggable=true
+            isDebuggable = true
 
-            resValue("string","appjoao","Horoscopo DEBUGG")
-            buildConfigField("String","BASE_URL","\"https://newastro.vercel.app/\"")
+            resValue("string", "appjoao", "Horoscopo DEBUGG")
+            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"")
         }
     }
     compileOptions {
@@ -50,27 +49,42 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures{
-        viewBinding=true
-        buildConfig=true
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
     //Dependences createds
     //NavComponents
-    implementation(libs.dagger.hilt)
-    implementation(libs.activity)
 
-    kapt(libs.dagger.hilt.compiler)
-    implementation(libs.squareup.javapoet)
+    //Navigation
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
+
+    //Retrofit
     implementation(libs.retofit)
     implementation(libs.retofit.converter)
     implementation(libs.okhttp3)
 
-    
+    //DaggerHilt
+    implementation(libs.dagger.hilt)
+    implementation(libs.squareup.javapoet)
+    kapt(libs.dagger.hilt.compiler)
+//Camera X
+    implementation(libs.camera.core)
+    implementation(libs.camera.camera2)
+    implementation(libs.camera.lifecycle)
+    implementation(libs.camera.extensions)
+    implementation(libs.camera.view)
+
+
+
+    implementation(libs.activity)
+
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

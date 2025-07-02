@@ -17,7 +17,7 @@ safeargsVersion="2.7.1"
 
 retofitVersion="2.9.0"
 okhttp3Version="4.3.1"
-
+cameraXVersion="1.2.3"
 
 
 
@@ -39,7 +39,11 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 retofit={group="com.squareup.retrofit2", name="retrofit", version.ref="retofitVersion"}
 retofit-converter={group="com.squareup.retrofit2", name="converter-gson", version.ref="retofitVersion"}
 okhttp3={group="com.squareup.okhttp3", name="logging-interceptor", version.ref="okhttp3Version"}
-
+camera-core={group="androidx.camera", name="camera-core",version.ref="cameraXVersion"}
+camera-camera2={group="androidx.camera", name="camera-camera2",version.ref="cameraXVersion"}
+camera-lifecycle={group="androidx.camera", name="camera-lifecycle",version.ref="cameraXVersion"}
+camera-extensions={group="androidx.camera", name="camera-extensions",version.ref="cameraXVersion"}
+camera-view={group="androidx.camera", name="camera-view",version.ref="cameraXVersion"}
 
 
 
