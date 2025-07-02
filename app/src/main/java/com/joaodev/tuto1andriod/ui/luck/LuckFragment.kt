@@ -1,6 +1,8 @@
 package com.joaodev.tuto1andriod.ui.luck
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +17,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.joaodev.tuto1andriod.R
 import com.joaodev.tuto1andriod.databinding.FragmentLuckBinding
+import com.joaodev.tuto1andriod.ui.core.listeners.OnSwiteTouckListener
 import com.joaodev.tuto1andriod.ui.horoscopo.HoroscopoViewModel
+import com.joaodev.tuto1andriod.ui.model.LuckyModel
+import com.joaodev.tuto1andriod.ui.providers.RandomCardsProviders
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Random
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -25,6 +31,9 @@ class LuckFragment : Fragment() {
     private val luckViewModel by viewModels<LuckViewModel>()
     private var _binging: FragmentLuckBinding? = null
     private val binding get() = _binging!!
+
+    @Inject
+    lateinit var randomCardsProviders: RandomCardsProviders
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -40,13 +49,48 @@ class LuckFragment : Fragment() {
     }
 
     private fun initUi() {
+        preparePrediccion()
         initListeners()
     }
 
-    private fun initListeners() {
-        binding.ivRulete.setOnClickListener {
-            spinRulete()
+    private fun preparePrediccion() {
+        val luck: LuckyModel? =randomCardsProviders.GetLucky()
+         luck?.let { lucks->
+             val luckText= getString(lucks.texto);
+             binding.tvLucky.text=luckText
+             binding.ivLuckCard.setImageResource(lucks.image)
+             binding.tvshare.setOnClickListener{ shareResult(luckText)}
+         }
+    }
+
+    private fun shareResult(predicion:String) {
+
+        val sendIndentL:Intent  = Intent().apply {
+            action=Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT,predicion)
+
+            type="text/plain"
         }
+
+        val shareIntent= Intent.createChooser(sendIndentL,null)
+        startActivity(shareIntent)
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun initListeners() {
+//        binding.ivRulete.setOnClickListener {
+//            spinRulete()
+//        }
+
+        binding.ivRulete.setOnTouchListener(object : OnSwiteTouckListener (requireContext()){
+            override fun onSwipeRight() {
+               spinRulete()
+            }
+
+            override fun onSwipeLeft() {
+                spinRulete()
+            }
+        })
     }
 
     private fun spinRulete() {
